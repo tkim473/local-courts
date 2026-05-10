@@ -1,30 +1,14 @@
 ###CONFIG FILE###
 
-sender_email = 'timkim.emailbot@gmail.com'
-app_password = "qzmwzsqestoctfjk"
-receiver_email = ['kimtimt@gmail.com','jaskim91@gmail.com', 'naeganayo@yahoo.com', 'naeganayo@gmail.com', 'j3nnipark@gmail.com','timkim.emailbot@gmail.com']
-# ,'jaskim91@gmail.com', 'naeganayo@yahoo.com', 'naeganayo@gmail.com', 'j3nnipark@gmail.com','timkim.emailbot@gmail.com'
-
 #api keys
 wx_api_key = 'd5592d86a4e19a8e0e6ba345ca9cd54f'				#wait... might not need this
-gas_api_key = 'dUGdlnW2MF7ydZSPMNLlpZoLNNtwgLdEeu3qb6ho'
-bible_api_key = 'BBIZvVIzH2TdKOd3aOTTZ'
-
-#google sheet variables
-sheet_id = "1GQFneqAhbudUI542uyb6Nc2XDWtnIdakJLh53lyh3o4"
-gs_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
-bible_id = "78a9f6124f344018-01"
 
 #other variables
 
 #URLs
 wx_url = "https://api.open-meteo.com/v1/forecast"
 geo_url = "https://geocoding-api.open-meteo.com/v1/search"
-gas_url = "https://api.eia.gov/v2/petroleum/pri/gnd/data"
 snow_url = "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/data"
-
-#locations
-wx_locs = ["Tacoma", "Yomitan", "El Paso", "Zarqa"]
 
 #pickle locations
 pickle_locs = {'court': ['Sahalie', 'BP Elem', 'BP', 'GameFarm'], 'lights': [1,0,0,1], 'lat': [47.299, 47.302, 47.302, 47.281], 'long': [-122.352, -122.427, -122.440, -122.207]}
@@ -63,59 +47,11 @@ wx_code_map = {
     99: "Thunderstorm with hail (heavy)",
 }
 
-#thanks chat. you the real mvp
-wx_icon_map = {
-    0: '<img src="https://openweathermap.org/img/wn/01d@2x.png" alt="clear sky">',
-
-    1: '<img src="https://openweathermap.org/img/wn/02d@2x.png" alt="mainly clear">',
-    2: '<img src="https://openweathermap.org/img/wn/02d@2x.png" alt="partly cloudy">',
-    3: '<img src="https://openweathermap.org/img/wn/03d@2x.png" alt="overcast">',
-
-    45: '<img src="https://openweathermap.org/img/wn/50d@2x.png" alt="fog">',
-    48: '<img src="https://openweathermap.org/img/wn/50d@2x.png" alt="fog">',
-
-    51: '<img src="https://openweathermap.org/img/wn/09d@2x.png" alt="drizzle">',
-    53: '<img src="https://openweathermap.org/img/wn/09d@2x.png" alt="drizzle">',
-    55: '<img src="https://openweathermap.org/img/wn/09d@2x.png" alt="drizzle">',
-
-    56: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="freezing drizzle">',
-    57: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="freezing drizzle">',
-
-    61: '<img src="https://openweathermap.org/img/wn/10d@2x.png" alt="rain">',
-    63: '<img src="https://openweathermap.org/img/wn/10d@2x.png" alt="rain">',
-    65: '<img src="https://openweathermap.org/img/wn/10d@2x.png" alt="heavy rain">',
-
-    66: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="freezing rain">',
-    67: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="freezing rain">',
-
-    71: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="snow">',
-    73: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="snow">',
-    75: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="heavy snow">',
-
-    77: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="snow grains">',
-
-    80: '<img src="https://openweathermap.org/img/wn/09d@2x.png" alt="rain showers">',
-    81: '<img src="https://openweathermap.org/img/wn/09d@2x.png" alt="rain showers">',
-    82: '<img src="https://openweathermap.org/img/wn/09d@2x.png" alt="heavy rain showers">',
-
-    85: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="snow showers">',
-    86: '<img src="https://openweathermap.org/img/wn/13d@2x.png" alt="heavy snow showers">',
-
-    95: '<img src="https://openweathermap.org/img/wn/11d@2x.png" alt="thunderstorm">',
-    96: '<img src="https://openweathermap.org/img/wn/11d@2x.png" alt="thunderstorm with hail">',
-    99: '<img src="https://openweathermap.org/img/wn/11d@2x.png" alt="heavy thunderstorm with hail">',
-}
 
 day_or_not = {
     0: "night",
     1: "day"
 }
-
-#UV INDEX
-bins = [-1,2, 5, 7, 11, 100]
-labels = ['Low', 'Mod', 'High', 'Very High', 'Extreme']
-guidance = ['No', 'yes', 'yes!', 'YES!', 'STAY INSIDE']
-uv_guidance_map = dict(zip(labels,guidance))
 
 
 
@@ -156,32 +92,3 @@ pickle_params = {
     "temperature_unit": "fahrenheit"
 }
 
-gas_params = {
-    'frequency': 'weekly',
-    'data[0]': 'value',
-    'facets[duoarea][]': ['SWA', 'STX'],
-    'facets[product][]': 'EPMR',
-    'facets[process][]':'PTE',
-    'api_key': gas_api_key
-}
-
-snow_params = {
-	'stationTriplets': ['791:WA:SNTL', '863:WA:SNTL'],
-	'elements': ['SNWD', 'SNDN', 'TMAX', 'SNOW'],
-    'beginDate': -3,
-    'endDate': 0
-}
-
-snowfall_params = {
-	"latitude": [47.746, 46.638],
-	"longitude": [-121.0928, -121.39],
-	"daily": ["snowfall_sum", "precipitation_sum", "rain_sum", "wind_gusts_10m_mean", "visibility_mean"],
-	"past_days": 3,
-	"forecast_days": 2,
-}
-
-#snow scoring bins
-
-snow_bins = [-50,60, 70, 80, 90, 110, 150]
-snow_guidance = ['dont go', 'might be worth it', 'try it out', 'solid!', 'shred!', 'gnarfest']
-#uv_guidance_map = dict(zip(labels,guidance))
