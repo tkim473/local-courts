@@ -1,0 +1,31 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Run PyScript
+
+on:
+  schedule:
+    - cron: "20 13 * * *" # runs daily at 0600 PST
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v6
+      
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13' 
+        
+    - name: Install dependencies
+      run: 
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run script
+      run: build_html.py
