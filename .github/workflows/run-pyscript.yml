@@ -38,4 +38,4 @@ jobs:
         git add .
         git commit -m "Auto-update HTML" || echo "No changes"
 
-        git push
+        git push index.html
