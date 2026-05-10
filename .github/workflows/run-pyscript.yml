@@ -29,3 +29,13 @@ jobs:
         pip install -r requirements.txt
     - name: Run script
       run: build_html.py
+
+    - name: Commit updated HTML
+      run: 
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+          
+        git add .
+        git commit -m "Auto-update HTML" || echo "No changes"
+
+        git push
