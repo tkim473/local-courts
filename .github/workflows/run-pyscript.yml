@@ -5,7 +5,7 @@ name: Run PyScript
 
 on:
   schedule:
-    - cron: "20 13 * * *" # runs daily at 0600 PST
+    - cron: "20 12 * * *" # runs daily at 0600 PST
   push:
     branches: [ "main" ]
   pull_request:
