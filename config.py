@@ -11,7 +11,7 @@ geo_url = "https://geocoding-api.open-meteo.com/v1/search"
 snow_url = "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/data"
 
 #pickle locations
-pickle_locs = {'court': ['Sahalie', 'BP Elem', 'BP', 'GameFarm', 'Clarks Creek', 'Milton'], 'lights': [1,0,0,1,1, 1], 'lat': [47.299, 47.302, 47.302, 47.281, 47.185, 47.248], 'long': [-122.352, -122.427, -122.440, -122.207, -122.32081, -122.3158]}
+pickle_locs = {'court': ['Sahalie', 'BP Elem', 'BP', 'GameFarm', 'Clarks Creek', 'Milton', 'Rainier Beach', 'Mercer'], 'lights': [1,0,0,1,1, 1, 1, 0], 'lat': [47.299, 47.302, 47.302, 47.281, 47.185, 47.248, 47.524, 47.591], 'long': [-122.352, -122.427, -122.440, -122.207, -122.32081, -122.3158, -122.274, -122.225]}
 
 #light
 

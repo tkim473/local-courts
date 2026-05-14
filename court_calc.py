@@ -83,7 +83,7 @@ def get_pickle():
 def plot_pickle():
     df_list = get_pickle()
 
-    fig, axs = plt.subplots(3,2, figsize = (11,12), sharey = True)
+    fig, axs = plt.subplots(4,2, figsize = (11,12), sharey = True)
     axs = axs.flatten()
     for index, df in enumerate(df_list):
 
