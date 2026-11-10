@@ -79,4 +79,4 @@ TimestampedGeoJson(
     date_options="h:mm A"
 ).add_to(m)
 
-m.save("index.html")
+m.save("map.html")
