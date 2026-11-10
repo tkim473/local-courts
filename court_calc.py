@@ -52,6 +52,8 @@ def get_pickle():
         hourly_data["is_day"] = hourly_is_day
         hourly_data['court'] = pickle_locs['court'][i]
         hourly_data['lights'] = pickle_locs['lights'][i]
+        hourly_data['lat'] = pickle_locs['lat'][i]
+        hourly_data['long'] = pickle_locs['long'][i]
         
         
         #scoring for each variable: wind, precip, temp, day
@@ -121,6 +123,7 @@ def plot_pickle():
 
     plt.tight_layout()      #automatically adjust layout to prevent overlapping titles
     today = date.today()
+
     fig.suptitle(f'Local Tennis Court Playability {today}')
     return fig, axs     #return tuple
 

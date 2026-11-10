@@ -3,7 +3,7 @@ import base64
 from io import BytesIO
 
 
-fig, axs = plot_pickle()
+fig, axs = plot_pickle()    #plot_pickle function returns a (fig, axs) tuple
 
 tmpfile = BytesIO()
 fig.savefig(tmpfile, format='png')
