@@ -12,10 +12,6 @@ m = folium.Map(
     attr="© OpenStreetMap contributors © CARTO"
 )
 
-#title
-map_title = "Pickleball Court Weather"
-title_html = f'<h1 style="position:absolute;z-index:100000; bottom: 24px; text-decoration: underline;" >{map_title}</h1>'
-m.get_root().html.add_child(folium.Element(title_html))
 
 
 kw = {"prefix": "fa", "color": "green", "icon": "warehouse"}
