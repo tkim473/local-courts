@@ -45,7 +45,7 @@ wx_params = {
 	"wind_speed_unit": "kn",
 	"temperature_unit": "fahrenheit",
 	"precipitation_unit": "inch",
-    "forecast_days": 3,
+    "forecast_days": 7,
     "wind_speed_unit": "kn"
 }
 
@@ -55,7 +55,7 @@ pickle_params = {
 	"hourly": ["wind_speed_10m", "precipitation_probability", "apparent_temperature", "temperature_2m", "precipitation", "weather_code", "is_day"],
 	"timezone": "America/Los_Angeles",
     "past_days": 0,
-	"forecast_days": 1,
+	"forecast_days": 7,
 	"wind_speed_unit": "kn",
     "temperature_unit": "fahrenheit"
 }
