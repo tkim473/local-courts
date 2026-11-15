@@ -46,7 +46,28 @@ for df in court_dfs:
     for _, row in df.iterrows():
 
         color = row['color_status']
-
+        
+        #conditional statement to indicate lights are on.
+        if row["is_day"] ==0 and row['lights'] == 1:
+            features.append({
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        row["long"],
+                        row["lat"]
+                    ]
+                },
+                "properties": {
+                    "times": [row["time"]],
+                    "icon": "marker",
+                    "iconstyle": {
+                        "iconUrl": "assets/icons/light_shadow.png",
+                        "iconSize": [40, 40],
+                        "iconAnchor": [18, 34],
+                    }
+                }
+            })
 
         features.append({
             "type": "Feature",
@@ -81,28 +102,7 @@ for df in court_dfs:
                 }
             }
         })
-        #conditional statement to indicate lights are on.
-        if row["is_day"] ==0 and row['lights'] == 1:
-            features.append({
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        row["long"],
-                        row["lat"]
-                    ]
-                },
-                "properties": {
-                    "times": [row["time"]],
-                    "icon": "marker",
-                    "iconstyle": {
-                        "iconUrl": "assets/icons/light_shadow.png",
-                        "iconSize": [40, 40],
-                        "iconAnchor": [18, 34],
 
-                    }
-                }
-            })
 
         
 
