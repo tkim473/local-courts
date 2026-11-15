@@ -82,49 +82,48 @@ def get_pickle():
 
 
 
-def plot_pickle():
-    df_list = get_pickle()
+# def plot_pickle():
+#     df_list = get_pickle()
 
-    fig, axs = plt.subplots(4,2, figsize = (11,12), sharey = True)
-    axs = axs.flatten()
-    for index, df in enumerate(df_list):
+#     fig, axs = plt.subplots(5,2, figsize = (11,12), sharey = True)
+#     axs = axs.flatten()
+#     for index, df in enumerate(df_list):
 
-        court = df['court'].iloc[0]     #get court name from dataframe
+#         court = df['court'].iloc[0]     #get court name from dataframe
 
-        #pickle_score already has a light multiplier making it 0 when its dark. Just turn the rest of the scores 0 if the overall score is 0. 
-        #It's a little backwards. 
+#         #pickle_score already has a light multiplier making it 0 when its dark. Just turn the rest of the scores 0 if the overall score is 0. 
+#         #It's a little backwards. 
         
-        df.loc[df['pickle_score']==0, ['wind_score', 'temp_score', 'precip_score']] = 0     #if pickle_score is 0 (its already )
+#         df.loc[df['pickle_score']==0, ['wind_score', 'temp_score', 'precip_score']] = 0     #if pickle_score is 0 (its already )
         
-        df['hour'] = df['date'].dt.strftime('%H:00')
-        df['wind_str'] = df['wind_speed_10m'].map(lambda x:f"{x:.1f}kt")
-        df['temp_str'] = df['temperature_2m'].map(lambda x:f"{x:.0f}F")
-        df['prec_str'] = df['precipitation_probability'].map(lambda x:f"{x:.1f}%")
+#         df['hour'] = df['date'].dt.strftime('%H:00')
+#         df['wind_str'] = df['wind_speed_10m'].map(lambda x:f"{x:.1f}kt")
+#         df['temp_str'] = df['temperature_2m'].map(lambda x:f"{x:.0f}F")
+#         df['prec_str'] = df['precipitation_probability'].map(lambda x:f"{x:.1f}%")
 
-        #convert some of the labels to ' ' blank values where pickle_score is 0. 
-        df.loc[df['pickle_score']==0, ['wind_str', 'temp_str', 'prec_str']] = '' 
-        ax = axs[index]
-        #make the background asthetically pleasing
-        ax.axhspan(80, 100, color = 'green', alpha=.2)
-        ax.axhspan(50, 80, color = 'yellow', alpha=.1)
-        ax.axhspan(00, 50, color = 'red', alpha=.1)
+#         #convert some of the labels to ' ' blank values where pickle_score is 0. 
+#         df.loc[df['pickle_score']==0, ['wind_str', 'temp_str', 'prec_str']] = '' 
+#         ax = axs[index]
+#         #make the background asthetically pleasing
+#         ax.axhspan(80, 100, color = 'green', alpha=.2)
+#         ax.axhspan(50, 80, color = 'yellow', alpha=.1)
+#         ax.axhspan(00, 50, color = 'red', alpha=.1)
 
-        #referencing ax (which is defined as axs[index]) in the .plot.bar call is what makes it utilize the previously created subplot. Without this, it will create individual plts. 
-        df[['hour','precip_score', 'temp_score', 'wind_score']].plot.bar(x='hour',stacked = True, align = 'edge', width = .95, ax = ax)
-        ax.set_title(court)
+#         #referencing ax (which is defined as axs[index]) in the .plot.bar call is what makes it utilize the previously created subplot. Without this, it will create individual plts. 
+#         df[['hour','precip_score', 'temp_score', 'wind_score']].plot.bar(x='hour',stacked = True, align = 'edge', width = .95, ax = ax)
+#         ax.set_title(court)
         
-        #column names to pull from df dataframe are iterated through
-        for c, col in zip(ax.containers, [ 'prec_str', 'temp_str', 'wind_str']):
-            rot = 45 if col == 'wind_str' else 90        #formatting so that wind_str is horizontal
-            lab_type = 'edge' if col == 'wind_str' else 'center'
-            ax.bar_label(c, labels = df[col], label_type=lab_type, rotation = rot)
+#         #column names to pull from df dataframe are iterated through
+#         for c, col in zip(ax.containers, [ 'prec_str', 'temp_str', 'wind_str']):
+#             rot = 45 if col == 'wind_str' else 90        #formatting so that wind_str is horizontal
+#             lab_type = 'edge' if col == 'wind_str' else 'center'
+#             ax.bar_label(c, labels = df[col], label_type=lab_type, rotation = rot)
 
 
 
-    plt.tight_layout()      #automatically adjust layout to prevent overlapping titles
-    today = date.today()
+#     plt.tight_layout()      #automatically adjust layout to prevent overlapping titles
+#     today = date.today()
 
-    fig.suptitle(f'Local Tennis Court Playability {today}')
-    return fig, axs     #return tuple
+#     fig.suptitle(f'Local Tennis Court Playability {today}')
+#     return fig, axs     #return tuple
 
-plot_pickle()

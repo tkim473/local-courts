@@ -1,3 +1,4 @@
+import config
 from court_calc import get_pickle       #get_pickle function returns dataframe with wx data
 import folium                           #library to position each plot
 import pandas as pd
@@ -12,18 +13,12 @@ m = folium.Map(
     attr="© OpenStreetMap contributors © CARTO"
 )
 
-
-
 kw = {"prefix": "fa", "color": "green", "icon": "warehouse"}
 icon = folium.Icon(**kw)
+
 #add static courts
-indoor_courts = {
-    "The Drop": [47.238955,-122.439934], #the drop
-    "Rally": [47.282960,-122.235638], #rally
-    "Fed Way Picklr": [47.355675,-122.311886]  #picklr
 
-}
-
+indoor_courts = config.indoor_courts
 
 for court, loc in indoor_courts.items():
     folium.Marker(location=loc, icon=icon, popup = court).add_to(m)
@@ -86,6 +81,32 @@ for df in court_dfs:
                 }
             }
         })
+        #conditional statement to indicate lights are on.
+        if row["is_day"] ==0 and row['lights'] == 1:
+            features.append({
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        row["long"],
+                        row["lat"]
+                    ]
+                },
+                "properties": {
+                    "times": [row["time"]],
+                    "icon": "marker",
+                    "iconstyle": {
+                        "iconUrl": "assets/icons/light_shadow.png",
+                        "iconSize": [40, 40],
+                        "iconAnchor": [18, 34],
+
+                    }
+                }
+            })
+
+        
+
+
 
 
 
