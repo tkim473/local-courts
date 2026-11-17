@@ -35,6 +35,7 @@ features = []
 #add courts
 #iterate through the dfs in court_dfs
 for df in court_dfs:
+
     #add column for color status
     df['color_status'] = pd.cut(df['pickle_score'], bins=bins, labels=labels)
     df['time'] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%dT%H:%M")
@@ -46,7 +47,7 @@ for df in court_dfs:
     for _, row in df.iterrows():
 
         color = row['color_status']
-        
+
         #conditional statement to indicate lights are on.
         if row["is_day"] ==0 and row['lights'] == 1:
             features.append({
@@ -60,6 +61,17 @@ for df in court_dfs:
                 },
                 "properties": {
                     "times": [row["time"]],
+                    "popup": (
+                                        f"<b>{row['court']}</b><br>"
+                                        f"Date: {row['date_str']}<br>"
+                                        f"Time: {row['time_str']}<br>"
+                                        f"Playability Score: {row['pickle_score']}<br>"
+                                        f"Temp: {row['temp']}°F<br>"
+                                        f"Wind: {row['wind']} mph<br>"
+                                        f"Precip Prob: {row['precipitation_probability']}%<br>"
+                                        f"Lights: {row['lights']}<br>"
+                                        
+                                    ),
                     "icon": "marker",
                     "iconstyle": {
                         "iconUrl": "assets/icons/light_shadow.png",
@@ -68,6 +80,9 @@ for df in court_dfs:
                     }
                 }
             })
+
+
+  
 
         features.append({
             "type": "Feature",
